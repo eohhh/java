@@ -10,7 +10,7 @@ public class Variable1 {
 		short num3 = 128; // short(2byte)
 		long num4 = 11111111111111l;
 		System.out.println(Long.MAX_VALUE);
-		System
+		
 		
 		byte num5 = 20;
 		int result = (byte) (num2 + num5); // 강제형변환.(casting)
