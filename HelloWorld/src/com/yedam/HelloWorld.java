@@ -19,6 +19,6 @@ public class HelloWorld {
 			}
 		}
 		System.out.println("sum의 값은 " + sum);
-	}
-	///adsfasdfsadfsadf
+	} //asdasd
+	///adsfasdfsadfs
 }
