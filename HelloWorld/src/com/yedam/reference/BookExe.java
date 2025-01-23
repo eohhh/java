@@ -11,7 +11,7 @@ public class BookExe {
 		// 1.전체목록 2.도서등록 3.조회(출판사명을 넣으면 조회) 9.종료
 		Scanner scn = new Scanner(System.in);
 		Book[] bookRe = new Book[100];
-		Book bookRe1 = new Book("혼공자", "신용권", "한빛미디어", 28000);
+		Book bookRe[0] = new Book("혼공자", "신용권", "한빛미디어", 28000);
 		Book bookRe2 = new Book("혼공", "신용", "한빛미디", 2800);
 		Book bookRe3 = new Book("혼", "신", "한빛미", 280);
 		boolean run = true;
@@ -25,7 +25,7 @@ public class BookExe {
 			 case 1:
 				 for (int i = 0; i < bookRe.length; i++) {
 					 if (bookRe[i] != null) {
-						 System.out.println(bookRe[i]);						 
+						 System.out.println(bookRe[i].bookName);						 
 					 }
 				 }
 				 break;
