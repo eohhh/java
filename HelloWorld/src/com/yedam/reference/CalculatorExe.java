@@ -13,12 +13,12 @@ public class CalculatorExe {
 		};
 		
 		
-//		Book author = cal.getBookInfo("혼자공부하는 자바", bookStore); // public String,int,blooean,Book 일때마다 맨앞 Book author를 맞게끔 바꿔줘야함.
-//		if (author != null) { // public String,int,blooean,Book 일때마다 (author != ???)  ???부분을 맞게끔 바꿔줘야함.
-//			System.out.println(author);
-//		} else {
-//			System.out.println("조회결과 없음");
-//		}
+		Book author = cal.getBookInfo("혼자공부하는 자바", bookStore); // public String,int,blooean,Book 일때마다 맨앞 Book author를 맞게끔 바꿔줘야함.
+		if (author != null) { // public String,int,blooean,Book 일때마다 (author != ???)  ???부분을 맞게끔 바꿔줘야함.
+			System.out.println(author);
+		} else {
+			System.out.println("조회결과 없음");
+		}
 		
 		int[] randomA = cal.randomAry(5);
 		for (int num : randomA) {

@@ -105,7 +105,7 @@ public class BookExe {
 		cal.getBookInfo(bookName, bookRe).showDetailInfo();
 //		for (int i = 0; i < bookRe.length; i++) {
 //			if (bookRe[i] != null && bookRe[i].getBookName().equals(bookName)) {  //  bookRe[i].getBookName() 사용자가 입력한 북네임이랑 (getBookName = bookName )
-//			                                                                      //  equals(bookName) 데이터상 정의한 북네임이 있는지 비교.
+//			                                                                      //  equals(bookName) => nextLine()의 데이터상 정의한 북네임이 있는지 비교.
 //				bookRe[i].showDetailInfo(); // 상세출력 =>  북네임이 서로 일치할 경우, Book.java에 정의한 showDetailInfo()의 내용을 출력(반환).
 //				break;
 //			}

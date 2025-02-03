@@ -5,19 +5,24 @@ public class Calculator {
 	// 1월달 달력 출력.
 	public void showCalender() {
 		int spaces = 6;
-		int lastDate = 31;
-//		String[] dateAry = new String dateAry[];
+		int lastDate = 28;
+		String[] dateAry = new String [spaces + lastDate];
 		// 배열에 값 ㅐ우기.
-//		for (int i = 0; i <dateAry.length; i++) {
-			
+		for (int i = 0; i < dateAry.length; i++) {
+			if (i <spaces) {
+				dateAry[i] = "";
+			} else {
+				dateAry[i] = "" + (i + 1 - spaces);
+			}
 		}
+		
 		String[] days = { "일", "월", "화", "수", "목", "금", "토" };
 		for(String day : days) {
 			System.out.printf("%4s", day);
 		}
 		System.out.println("\n===========================");
 		// 공백, 말일 계산.
-	}
+}
 	
 	public Book getBookInfo(String btitle, Book[] bookAry) {
 //		Book[] bookRepo = {new Book("혼공자", "신용권", "한빛미디어", 10000), 
