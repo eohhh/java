@@ -40,7 +40,7 @@ public class BoardExe {
 		// 1페이지: 0~4, 2페이지: 5~9, 3페이지 10~14
 		int page = 1;
 		int lastPage = (int) Math.ceil(getMaxCount() / 5.0); // 13/5 => 2.6 , Math.ceil => 반올림 (매스.씰)
-		// Math.ceil(getMaxCount() / 5.0 은 실수타입이여서 오류 => (int)를 사용해서 캐스팅한다. int lastPage와 같은 정수로 만듦.
+		// Math.ceil(getMaxCount() / 5.0) 은 실수타입이여서 오류 => (int)를 사용해서 캐스팅한다. int lastPage와 같은 정수로 만듦.
 		while(true) {			
 			int firstIdx = (page - 1) * 5; // 1페이지: 0~4를 불러오기 위한 식. (page = 1; 일때 대입해보면 0. page: 2 => 5, page =3; 도 마찬가지)
 			int lastIdx = (page * 5) - 1;  // 1페이지: 0~4를 불러오기 위한 식. (page = 1; 일때 대입해보면 4 page:2 => 9.)
@@ -95,12 +95,15 @@ public class BoardExe {
 //		String writeDate = scn.nextLine();
 		//배열의 빈공간에 등록.
 
-			if( title.length() >= 5 && title.length() <= 15 ) {
+			if(title.length() >= 5 && title.length() <= 15 ) {
 				for (int i = 0; i < boardRepo.length; i++) {
 					if (boardRepo[i] == null) {
 						boardRepo[i] = new Board(title, content, loginId, new Date());
-						System.out.println("등록완료.");
+						System.out.println("등록불가합니다..");
 						break; // 한건만 등록.
+					} else if (boardRepo[i] != null && boardRepo[i].getTitle().equals(title)) {
+						System.out.println("이미 등록된 제목입니다.");
+						break;
 					}
 				}
 			} 
