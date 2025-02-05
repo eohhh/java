@@ -1,4 +1,8 @@
 package com.yedam.interfaces.emp;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * 배열활용.
  * <extends와 implements의 차이>
@@ -9,9 +13,19 @@ package com.yedam.interfaces.emp;
 public class EmpAryExe implements EmpDAO{
 	
 	Employee[] employee = new Employee[10]; // 저장.
-
+	
+	List<Employee> empList = new ArrayList<Employee>();
+	
+	public EmpAryExe() {
+		employee[0] = (new Employee(1001, "홍길동", "1111-1111"));	// Employee을 따라가면 => (int empNo, String empName, String telNo) 실행됨.
+		employee[1] = (new Employee(100, "박길동", "2222-2222"));
+		employee[2] = (new Employee(10, "호빵", "3333-3333"));
+		employee[3] = (new Employee(1, "호박", "4444-4444", "2000-01-01", 500));
+	}
+	
 	@Override
 	public boolean registerEmp(Employee emp) {
+		
 		return false;
 	}
 
@@ -27,7 +41,16 @@ public class EmpAryExe implements EmpDAO{
 
 	@Override
 	public Employee[] search(Employee emp) {
-		return null;
+		Employee[] result = new Employee[10];
+		int idx = 0;
+
+		for (int i = 0; i < employee.length; i++) {
+			if (employee[i] != null && employee[i].getEmpName().indexOf(emp.getEmpName()) > -1) {
+					result[idx] = employee[i];
+					idx++; // idx값이 0부터 하나씩 증가되도록.
+			}
+		}
+		return result;
 	}
 
 }
