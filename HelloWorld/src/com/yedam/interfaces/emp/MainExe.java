@@ -13,7 +13,6 @@ public class MainExe {
 		// 스캐너, run
 		Scanner scn = new Scanner(System.in);
 		boolean run = true;
-		
 		// 배열, 컬렉션을 활용하는 두가지 버전을 만듦.
 		EmpDAO dao = new EmpAryExe(); // => 배열을 활용하고 싶으면 EmpAryExe().
 //		EmpDAO dao = new EmpListExe(); // => 컬렉션을 활용하고 싶으면 EmpListExe().
