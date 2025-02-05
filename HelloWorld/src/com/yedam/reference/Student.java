@@ -18,14 +18,14 @@ public class Student {
 		this.engScore = engScore;
 	}
 
-	Student(String studentName, int engScore, int mathScore) {
+	public Student(String studentName, int engScore, int mathScore) {
 		this.studentName = studentName;
 		this.engScore = engScore;
 		this.mathScore = mathScore;
 	}
 
 	// 메소드(기능)
-	void printInfo() {
+	public void printInfo() {
 		System.out.printf("이름은 %s, 영어점수 %d, 수학점수 %d\n", studentName, engScore, mathScore);
 	}
 
