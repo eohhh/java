@@ -1,5 +1,6 @@
 package com.yedam.interfaces.emp;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -9,23 +10,48 @@ import java.util.Scanner;
  * Employee, EmpAryExe, EmpListExe, EmpDAO(인터페이스)
  */
 public class MainExe {
+	static Scanner scn = new Scanner(System.in);
+	// 배열, 컬렉션.
+	static EmpDAO dao = new EmpAryExe(); // => 배열을 활용하고 싶으면 EmpAryExe().
+	
 	public static void main(String[] args) {
 		// 스캐너, run
-		Scanner scn = new Scanner(System.in);
 		boolean run = true;
 		// 배열, 컬렉션을 활용하는 두가지 버전을 만듦.
-		EmpDAO dao = new EmpAryExe(); // => 배열을 활용하고 싶으면 EmpAryExe().
 //		EmpDAO dao = new EmpListExe(); // => 컬렉션을 활용하고 싶으면 EmpListExe().
 		
 		// 컬렉션을 활용.	
 		while (run) {
 			System.out.println("1.사원추가 2. 수정 3.삭제 4.조회 9.종료");
 			System.out.println("메뉴를 선택하세요>> ");
-			int menu = scn.nextInt();scn.nextLine();
+			int menu = 0;
+			
+			try {				
+				menu = scn.nextInt();
+			} catch (InputMismatchException e) {
+				// 정상실행이 진행되도록 기능작성.
+				System.out.println("메뉴를 확인하세요. ");
+				scn.nextInt();
+				continue;
+			}
+			scn.nextLine();
 			switch(menu) {
 			case 1: // 추가. (사원번호, 이름, 전화번호)
-				System.out.print("사원번호>> ");	
-				int empNo = Integer.parseInt(scn.nextLine());	// 사원번호를 담는 변수선언.
+//				System.out.print("사원번호>> ");	
+//				int empNo = Integer.parseInt(scn.nextLine());	// 사원번호를 담는 변수선언.
+				int empNo = 0;
+				while (true) {
+				try {
+					System.out.print("사원번호>>");
+					empNo = Integer.parseInt(scn.nextLine());
+					break;				
+					
+//					empNo = scn.nextInt();
+				} catch (NumberFormatException e) {
+					System.out.println("사원번호를 확인하세요.");
+				}
+			}
+				
 				System.out.print("이름>> ");
 				String eName = scn.nextLine();	// 사원이름을 담는 변수선언.
 				System.out.print("전화번호입력>> ");
@@ -63,20 +89,26 @@ public class MainExe {
 				break;
 				
 			case 3: // 삭제. 사원번호.
-				System.out.println("사원번호 >>");
-				empNo = Integer.parseInt(scn.nextLine());
-				
-				if(dao.removeEmp(empNo)) {
-					System.out.println("삭제완료");
+				try {
+					remove();
+				} catch (NumberFormatException e) {
+					System.out.println("사원번호 확인");
 				}
 				break;
+//				System.out.println("사원번호 >>");
+//				empNo = Integer.parseInt(scn.nextLine());
+//				
+//				if(dao.removeEmp(empNo)) {
+//					System.out.println("삭제완료");
+//				}
+//				break;
 				
 			case 4: // 목록.
 				// 조회조건(급여 이상)
 //				System.out.println("조회 급여조건 >> ");
 //				sal = Integer.parseInt(scn.nextLine());
 				System.out.println("조회 이름조건 >> ");
-				eName = scn.nextLine();
+				eName = scn.nextLine(); 
 				
 				Employee emp = new Employee();
 				emp.setEmpName(eName);
@@ -105,4 +137,14 @@ public class MainExe {
 		System.out.println("end of prog.");
 		
 	} // end of main.
+	
+	// 예외 떠넘기기 예제.
+	static void remove() throws NumberFormatException { // try-catch를 하지 않고 thorws를 사용해서 remove()한테 떠넘김.(case 3:)
+		System.out.print("사원번호>> ");
+		int empNo = Integer.parseInt(scn.nextLine());
+		
+		if (dao.removeEmp(empNo)) {
+			System.out.println("삭제완료");
+		}
+	} // end of remove.
 } // end of class.
