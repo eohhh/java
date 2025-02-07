@@ -78,7 +78,7 @@ public class StudentApp {
 ////		} catch {
 ////			
 ////		}
-		System.out.println("몸무게 입력>> ");
+		System.out.println("몸무게 입력11>> ");
 		double weight = Double.parseDouble(scn.nextLine());
 		System.out.println("점수 입력>> ");
 		int score = Integer.parseInt(scn.nextLine());
