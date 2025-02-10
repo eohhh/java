@@ -1,9 +1,12 @@
 package com.yedam.interfaces.emp;
+
 /*
  * class x / interface로 생성.
  * 
  * 등록, 수정, 삭제, 조회.
+ * EmparyExe.java, EmpListExe.java, EmpDBExe.java
  */
+
 public interface EmpDAO {
 	
 	// 등록.

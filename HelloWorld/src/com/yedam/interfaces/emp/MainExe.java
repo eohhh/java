@@ -3,12 +3,13 @@ package com.yedam.interfaces.emp;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
+/*
  * 사원관리 App v.1
  * 실행클래스: MainExe
  * 인터페이스 활용. (배열, 컬렉션)
  * Employee, EmpAryExe, EmpListExe, EmpDAO(인터페이스)
  */
+
 public class MainExe {
 	static Scanner scn = new Scanner(System.in);
 	// 배열, 컬렉션.
