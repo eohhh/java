@@ -48,32 +48,38 @@ public class EmpDBExe implements EmpDAO {
 		return false;
 	}
 
-	@Override
-	public Employee[] search(Employee emp) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 //	@Override
 //	public Employee[] search(Employee emp) {
-//		List<Employee> empList = new ArrayList<>();
-//		try {
-//			//조회결과
-//		Statement stmt = getConnect().createStatement();
-//		ResultSet rs = stmt.executeQuery("select * from tbl_employees");
-//		while(rs.next()) { 
-//			Employee empl = new Employee();
-//			empl.setEmpNo(rs.getInt("emp_no"));
-//			empl.setEmpName(rs.getString("emp_name"));
-//			empl.setHireDate(rs.getDate("hire_date"));
-//			empl.setSalary(rs.getInt("salary"));
-//			empl.setTelNo(rs.getString("tel_no"));
-//			empList.add(emp);
-//		}catch(SQLException e) {
-//			System.err.println(e);
-//		}
-//		
+//		// TODO Auto-generated method stub
 //		return null;
 //	}
+
+	@Override
+	public Employee[] search(Employee emp) {
+		List<Employee> empList = new ArrayList<>();
+		String qry =  "select * from tbl_employees " + "where emp_name = nvl('" + emp.getEmpName() + "', emp_name)" + "order by emp_no";
+		try {
+			//조회결과
+		Statement stmt = getConnect().createStatement();
+		ResultSet rs = stmt.executeQuery(qry);
+		while(rs.next()) { 
+			Employee empl = new Employee();
+			empl.setEmpNo(rs.getInt("emp_no"));
+			empl.setEmpName(rs.getString("emp_name"));
+			empl.setHireDate(rs.getDate("hire_date"));
+			empl.setSalary(rs.getInt("salary"));
+			empl.setTelNo(rs.getString("tel_no"));
+			
+			empList.add(empl);
+		}
+		}catch(SQLException e) {
+			System.err.println(e);
+		}
+		
+		return null;
 	
+	}
 }
+
+	
+
