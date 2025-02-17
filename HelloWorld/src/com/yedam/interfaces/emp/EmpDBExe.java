@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,18 +34,62 @@ public class EmpDBExe implements EmpDAO {
 	}
 
 	@Override
-	public boolean registerEmp(Employee emp) {
+	public boolean registerEmp(Employee emp) { // 등록
+		
+		String query =  "insert into tbl_employees ";
+		query += "values (" +emp.getEmpNo() //
+				+", " +emp.getEmpName()
+				+", " +emp.getTelNo()
+				+")";
+		try {
+			Statement stmt = getConnect().createStatement();
+			int r =stmt.executeUpdate(query);
+			if (r > 0) {
+				return true;
+			}
+	}catch (Exception e) {
 		return false;
+		
+	} return true;
 	}
-
 	@Override
 	public boolean modifyEmp(Employee emp) {
-//		Statement stmt = getConnect().createStatement();
-		return false;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String sql = "UPDATE tbl_employees "
+				+ "SET tel_no =  nvl('"+ emp.getTelNo() + "', tel_no),"
+				+ "    hire_date = CASE to_date('" + sdf.format(emp.getHireDate())+"', 'yyyy-mm-dd')"
+				+ "				   WHEN to_date('1900-01-01','yyyy-mm-dd') THEN hire_date"
+				+ "                ELSE to_date('" + sdf.format(emp.getHireDate())+"','yyyy-mm-dd')"
+				+ "                END,"
+				+ "    salary = CASE + " + emp.getSalary() + " WHEN 0 THEN salary"
+				+ "                        ELSE " +emp.getSalary()
+				+ "             END "
+				+ "WHERE emp_no = " + emp.getEmpNo();
+				
+//		sql = "update tbl_employees "
+			try {
+			Statement stmt = getConnect().createStatement();
+			int r =stmt.executeUpdate(sql); // 처리된 건수.
+			if(r > 0)
+				return true;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return false;
 	}
 
+	
 	@Override
 	public boolean removeEmp(int empNo) {
+		String sql = "delete from tbl_employees where emp_no = " + empNo;
+		try {
+		Statement stmt = getConnect().createStatement();
+		int r =stmt.executeUpdate(sql);
+		if(r > 0)
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 

@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class MainExe {
 	static Scanner scn = new Scanner(System.in);
 	// 배열, 컬렉션.
-	static EmpDAO dao = new EmpAryExe(); // => 배열을 활용하고 싶으면 EmpAryExe().
+	static EmpDAO dao = new EmpDBExe(); // => 배열을 활용하고 싶으면 EmpAryExe().
 	
 	public static void main(String[] args) {
 		// 스캐너, run
@@ -67,7 +67,7 @@ public class MainExe {
 				System.out.print("사원번호>> ");	// 어떤 사원을 수정할지 물어보는거.
 				empNo = Integer.parseInt(scn.nextLine());
 				System.out.print("전화번호입력>> ");
-				tel = scn.nextLine();
+				tel = scn.nextLine(); // ""
 				System.out.print("입사일자>> ");
 				String hdate = scn.nextLine();
 				if (hdate.equals("")) {
