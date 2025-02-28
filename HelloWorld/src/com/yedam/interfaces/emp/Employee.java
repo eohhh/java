@@ -11,12 +11,12 @@ import java.util.Date;
  * 입사일자(2020-02-04)
  * 급여(300, 350)
  */
-public class Employee {
-	private int empNo;
-	private String empName;
-	private String telNo;	// 하이픈(-)이 들어가기 때문에 String 타입.
-	private Date hireDate;
-	private int salary;
+public class Employee { // tbl_employees
+	private int empNo; // emp_no 컬럼.
+	private String empName; // emp_name
+	private String telNo;	// tel_no 	// 하이픈(-)이 들어가기 때문에 String 타입.
+	private Date hireDate; // hire_date
+	private int salary; // salary
 	
 	// 생성자.
 	public Employee() {
